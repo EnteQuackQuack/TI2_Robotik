@@ -1,0 +1,71 @@
+# depslib dependency file v1.0
+1586377971 source:c:\dokumente\lehre\ss2020\it\rb\projekte\simulator\zettel1_a2\uebung1\uebung1\main.cpp
+	"nnxt.h"
+
+1586382190 
+
+1586381870 c:\dokumente\lehre\ss2020\it\rb\projekte\simulator\zettel1_a2\uebung1\uebung1\nnxt.h
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+	<stdio.h>
+	<thread>
+
+1586382752 source:c:\dokumente\lehre\ss2020\it\rb\projekte\simulator\auslieferung\uebung1\main.cpp
+	"nnxt.h"
+
+1586382190 c:\dokumente\lehre\ss2020\it\rb\projekte\simulator\auslieferung\uebung1\nnxt.h
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+	<stdio.h>
+	<thread>
+
+1586381884 source:/home/julian/Downloads/Uebung1/main.cpp
+	"nnxt.h"
+
+1586621898 /home/julian/Downloads/Uebung1/nnxt.h
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+	<stdio.h>
+	<thread>
+	<vector>
+	<string>
+
+1773999074 source:/media/julian/Windows/Users/jupfy/Desktop/oth/2_semester/Robotik/Uebung1/main.cpp
+	"nnxt.h"
+
+1586621898 /media/julian/Windows/Users/jupfy/Desktop/oth/2_semester/Robotik/Uebung1/nnxt.h
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+	<stdio.h>
+	<thread>
+	<vector>
+	<string>
+
+1774362377 source:/home/julian/Documents/OTH/2_semester/Robotik/Blatt 1/exercise_1/main.cpp
+	"nnxt.h"
+
+1586621898 /home/julian/Documents/OTH/2_semester/Robotik/Blatt 1/exercise_1/nnxt.h
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+	<stdio.h>
+	<thread>
+	<vector>
+	<string>
+
+1774366872 source:/home/julian/Documents/OTH/2_semester/Robotik/Blatt 1/exercise_2/main.cpp
+	"nnxt.h"
+
+1586621898 /home/julian/Documents/OTH/2_semester/Robotik/Blatt 1/exercise_2/nnxt.h
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+	<stdio.h>
+	<thread>
+	<vector>
+	<string>
+
