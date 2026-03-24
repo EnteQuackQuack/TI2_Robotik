@@ -13,12 +13,14 @@ void Motor_Stop_All() {
 }
 
 void TurnClockwise(unsigned int angle) {
-  angle = 8 * angle;
+  angle = 8 * angle; // at 50 speed, the simulator needs 8*delay to turn the
+                     // proper degrees
   Motor_Drive(Port_A, Motor_dir_forward, 50);
   Motor_Drive(Port_B, Motor_dir_backward, 50);
   Delay(angle);
 }
-// test 2
+// test
+
 void Motor_Drive_All(uint8_t speed, unsigned int duration) {
   Motor_Drive(Port_A, Motor_dir_forward, speed);
   Motor_Drive(Port_B, Motor_dir_forward, speed);
