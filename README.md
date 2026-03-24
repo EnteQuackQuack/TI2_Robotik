@@ -3,7 +3,7 @@
 ```
 TI2_Robotik
  - UebungTemplate
- - Blatt 1
+ - Blatt_1
     - exercise_1
        - exercise1_1.cbp
        - exercise1_1.depend
@@ -12,8 +12,8 @@ TI2_Robotik
     - exercise_n
        - exercise1_n.cbp
        - etc
- - Blatt ...
- - Blatt n
+ - Blatt_...
+ - Blatt_n
 ```
 One folder per exercise sheet, one subfolder per task of each sheet.
 # Commits
