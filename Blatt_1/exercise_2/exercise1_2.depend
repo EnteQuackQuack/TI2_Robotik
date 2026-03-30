@@ -69,3 +69,15 @@
 	<vector>
 	<string>
 
+1774373419 source:/home/julian/Documents/OTH/2_semester/Robotik/Blatt_1/exercise_2/main.cpp
+	"nnxt.h"
+
+1774373419 /home/julian/Documents/OTH/2_semester/Robotik/Blatt_1/exercise_2/nnxt.h
+	<iostream>
+	<winsock2.h>
+	<windows.h>
+	<stdio.h>
+	<thread>
+	<vector>
+	<string>
+

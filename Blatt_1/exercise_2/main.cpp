@@ -21,6 +21,12 @@ void TurnClockwise(unsigned int angle) {
 }
 // test
 
+/**
+ * @brief it turns on all the motors
+ *
+ * @param speed movement speed 1-100
+ * @param duration dutycycle
+ */
 void Motor_Drive_All(uint8_t speed, unsigned int duration) {
   Motor_Drive(Port_A, Motor_dir_forward, speed);
   Motor_Drive(Port_B, Motor_dir_forward, speed);
