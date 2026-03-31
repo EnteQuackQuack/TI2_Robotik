@@ -1,10 +1,10 @@
 #include "nnxt.h"
 
-motor_dir_e direction; // currently selected movement direction
-int moving;            // check if the robot is currently moving
 int movement_command;  // check if the robot is supposed to be moving
+int direction_command; // check if the direction should get toggled
 
-void Motor_Drive_All(uint8_t speed, unsigned int duration) {
+void Motor_Drive_All(uint8_t speed, unsigned int duration,
+                     motor_dir_t direction) {
   Motor_Drive(Port_A, direction, speed);
   Motor_Drive(Port_B, direction, speed);
   Delay(duration);
@@ -19,21 +19,19 @@ void Motor_Break_All() {
 /**
  * @brief function to toggle the movement direction
  */
-void Toggle_Direction() {
+void Toggle_Direction(motor_dir_t direction) {
   if (direction == Motor_dir_forward)
     direction = Motor_dir_backward;
   else
     direction = Motor_dir_forward;
 }
 
-sensor_touch_clicked_t touch_a;
-sensor_touch_clicked_t touch_b;
-
 /**
  * @brief Task that sees a single button press, and doesnt retrigger until the
  * button has been released
  */
 void Task_left_button() {
+  sensor_touch_clicked_t touch_a;
   // sensor_touch_clicked_t touch_a;
   sensor_touch_clicked_t input_change = SensorTouch_released;
   while (1) {
@@ -43,18 +41,8 @@ void Task_left_button() {
 
       input_change = touch_a;
       if (touch_a == SensorTouch_clicked) {
-        // movement
-        // NNXT_LCD_Clear(1);
-        // Delay(20);
-        // NNXT_LCD_DisplayStringAtLine(0, "Port_0 pressed");
-        // Delay(20);
         movement_command = 1;
       }
-    } else {
-      // NNXT_LCD_Clear(1);
-      // Delay(20);
-      // NNXT_LCD_DisplayStringAtLine(0, "Port_0 not pressed");
-      // Delay(20);
     }
   }
 }
@@ -63,7 +51,7 @@ void Task_left_button() {
  * @brief Task that updates press status of the right button
  */
 void Task_right_button() {
-  direction = Motor_dir_forward;
+  sensor_touch_clicked_t touch_b;
   sensor_touch_clicked_t input_change = SensorTouch_released;
   while (1) {
     Delay(100);
@@ -71,18 +59,11 @@ void Task_right_button() {
     if (touch_b != input_change) {
       input_change = touch_b;
       if (touch_b == SensorTouch_clicked) {
-        // movement
-        // NNXT_LCD_Clear(1);
-        // Delay(20);
         NNXT_LCD_DisplayStringAtLine(1, "Port_1 pressed");
-        // Delay(20);
-        Toggle_Direction();
+        direction_command = 1;
       }
     } else {
-      // NNXT_LCD_Clear(1);
-      Delay(20);
       NNXT_LCD_DisplayStringAtLine(1, "Port_1 not pressed");
-      // Delay(20);
     }
   }
 }
@@ -92,20 +73,30 @@ void Task_right_button() {
  * and Task_left_button
  */
 void Task_movement_control() {
+  motor_dir_t direction = Motor_dir_forward;
   char forwards[20] = "forwards ";
   char backwards[20] = "backwards";
+  int moving = 0;
   while (1) {
     Delay(20);
+
+    // direction display output
     if (direction == Motor_dir_forward) {
       NNXT_LCD_DisplayStringAtLine(2, forwards);
     } else {
       NNXT_LCD_DisplayStringAtLine(2, backwards);
     }
 
+    // direction toggle logic
+    if (direction_command == 1) {
+      Toggle_Direction(direction);
+      direction_command = 0;
+    }
+    // movement logic
     if (movement_command == 1 && moving == 0) {
       NNXT_LCD_DisplayStringAtLine(3, "moving    ");
       moving = 1;
-      Motor_Drive_All(35, 1000);
+      Motor_Drive_All(35, 1000, direction);
       Motor_Break_All();
       moving = 0;
       movement_command = 0;
@@ -119,7 +110,7 @@ int main() {
   SensorConfig(Port_0, SensorTouch);
   SensorConfig(Port_1, SensorTouch);
   movement_command = 0;
-  moving = 0;
+  direction_command = 0;
 
   CreateAndStartTask(Task_left_button);
   CreateAndStartTask(Task_right_button);
