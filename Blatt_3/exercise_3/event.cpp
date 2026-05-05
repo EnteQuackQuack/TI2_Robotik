@@ -1,5 +1,5 @@
 #include "event.h"
-#include "nnxt.h" //comment out before compiling, codeblocks is weird with it. Only there for the LSP to shut up
+//#include "nnxt.h" //comment out before compiling, codeblocks is weird with it. Only there for the LSP to shut up
 
 volatile uint16_t event_cache = 0;
 
