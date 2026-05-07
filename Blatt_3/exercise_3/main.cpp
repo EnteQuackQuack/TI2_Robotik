@@ -1,13 +1,14 @@
-#include "event.h"
+// #include "event.h"
 #include "nnxt.h"
-#include "timer.h"
+// #include "timer.h"
 
 #include "event.cpp"
 #include "timer.cpp"
 
 #define EVENT_GO_LEFT EVENT_0
 #define EVENT_GO_RIGHT EVENT_1
-#define TIMER_RETURN EVENT_14
+#define EVENT_TIMER_RETURN EVENT_14
+#define TIMER_RETURN TIMER_A
 
 // parameters to be used to be fine tuned to turn robot behavior
 const int turn_90_deg = 5;
@@ -79,129 +80,131 @@ void task_right_button() {
 }
 
 void task_movement_control() {
-  int moving = 0;
+  // int moving = 0; // moving never set to 1
   const int start_angle = 0;
   const int start_pos = 3;
   int current_pos = start_pos;
   int current_angle = start_angle;
 
-  start_timer(TIMER_RETURN);
+  start_timer(EVENT_TIMER_RETURN);
 
   while (1) {
     Delay(20);
 
-    if (moving == 0) {
-      switch (current_angle) {
-      case 0:
-        if (EVENT_GO_LEFT) {
-          rotate(-90);
-          current_angle -= 90;
-          move(1);
-          current_pos--;
-          cancel_timer(TIMER_RETURN);
-        } else if (EVENT_GO_RIGHT) {
-          rotate(90);
-          current_angle += 90;
-          move(1);
-          current_pos++;
-          cancel_timer(TIMER_RETURN);
-        } else if (TIMER_RETURN) {
-          cancel_timer(TIMER_RETURN);
-        }
-        break;
-
-      case -90:
-        if (EVENT_GO_LEFT) {
-          if (current_pos > 0) {
-            move(1);
-            current_pos--;
-          }
-          cancel_timer(TIMER_RETURN);
-        }
-
-        else if (EVENT_GO_RIGHT) {
-          rotate(180);
-          current_angle += 180;
-          move(1);
-          current_pos++;
-          cancel_timer(TIMER_RETURN);
-        }
-
-        else if (TIMER_RETURN) {
-          if (current_pos > start_pos) {
-            move(current_pos - start_pos);
-            current_pos = start_pos;
-            rotate(-90);
-            current_angle = start_angle;
-
-          } else if (current_pos == start_pos) {
-            rotate(90);
-            current_angle = start_angle;
-
-          } else if (current_pos < start_angle) {
-            rotate(180);
-            move(start_pos - current_pos);
-            current_pos = start_pos;
-            rotate(-90);
-            current_angle = start_angle;
-          }
-          cancel_timer(TIMER_RETURN);
-        }
-        break;
-
-      case 90:
-        if (EVENT_GO_LEFT) {
-          rotate(-180);
-          current_angle -= 180;
-          move(1);
-          current_pos--;
-          cancel_timer(TIMER_RETURN);
-        } else if (EVENT_GO_RIGHT) {
-          if (current_pos < 6) {
-            move(1);
-            current_pos++;
-          }
-          cancel_timer(TIMER_RETURN);
-        } else if (TIMER_RETURN) {
-          if (current_pos > start_pos) {
-            rotate(-180);
-            move(current_pos - start_pos);
-            current_pos = start_pos;
-            rotate(90);
-            current_angle = start_angle;
-
-          } else if (current_pos == start_pos) {
-            rotate(-90);
-            current_angle = start_angle;
-
-          } else if (current_pos < start_pos) {
-            move(start_pos - current_pos);
-            current_pos = start_pos;
-            rotate(-90);
-            current_angle = start_angle;
-          }
-          cancel_timer(TIMER_RETURN);
-        }
-        break;
-
-      default:
-        // Error
-        break;
+    // if (moving == 0) {
+    switch (current_angle) {
+    case 0:
+      if (TIMER_RETURN) {
+        rotate(-90);
+        current_angle -= 90;
+        move(1);
+        current_pos--;
+        cancel_timer(EVENT_TIMER_RETURN);
+      } else if (EVENT_GO_RIGHT) {
+        rotate(90);
+        current_angle += 90;
+        move(1);
+        current_pos++;
+        cancel_timer(EVENT_TIMER_RETURN);
+      } else if (EVENT_TIMER_RETURN) {
+        cancel_timer(EVENT_TIMER_RETURN);
       }
+      break;
+
+    case -90:
+      if (EVENT_GO_LEFT) {
+        if (current_pos > 0) {
+          move(1);
+          current_pos--;
+        }
+        cancel_timer(EVENT_TIMER_RETURN);
+      }
+
+      else if (EVENT_GO_RIGHT) {
+        rotate(180);
+        current_angle += 180;
+        move(1);
+        current_pos++;
+        cancel_timer(EVENT_TIMER_RETURN);
+      }
+
+      else if (EVENT_TIMER_RETURN) {
+        if (current_pos > start_pos) {
+          move(current_pos - start_pos);
+          current_pos = start_pos;
+          rotate(-90);
+          current_angle = start_angle;
+
+        } else if (current_pos == start_pos) {
+          rotate(90);
+          current_angle = start_angle;
+
+        } else if (current_pos < start_angle) {
+          rotate(180);
+          move(start_pos - current_pos);
+          current_pos = start_pos;
+          rotate(-90);
+          current_angle = start_angle;
+        }
+        cancel_timer(EVENT_TIMER_RETURN);
+      }
+      break;
+
+    case 90:
+      if (EVENT_GO_LEFT) {
+        rotate(-180);
+        current_angle -= 180;
+        move(1);
+        current_pos--;
+        cancel_timer(EVENT_TIMER_RETURN);
+      } else if (EVENT_GO_RIGHT) {
+        if (current_pos < 6) {
+          move(1);
+          current_pos++;
+        }
+        cancel_timer(EVENT_TIMER_RETURN);
+      } else if (EVENT_TIMER_RETURN) {
+        if (current_pos > start_pos) {
+          rotate(-180);
+          move(current_pos - start_pos);
+          current_pos = start_pos;
+          rotate(90);
+          current_angle = start_angle;
+
+        } else if (current_pos == start_pos) {
+          rotate(-90);
+          current_angle = start_angle;
+
+        } else if (current_pos < start_pos) {
+          move(start_pos - current_pos);
+          current_pos = start_pos;
+          rotate(-90);
+          current_angle = start_angle;
+        }
+        cancel_timer(EVENT_TIMER_RETURN);
+      }
+      break;
+
+    default:
+      // Error
+      break;
     }
+    // }
   }
 }
 
 int main() {
   SensorConfig(Port_0, SensorTouch);
   SensorConfig(Port_1, SensorTouch);
+  MotorPortInit(Port_A);
+  MotorPortInit(Port_B);
 
   CreateAndStartTask(Task_timer);
   CreateAndStartTask(task_left_button);
   CreateAndStartTask(task_right_button);
   CreateAndStartTask(task_movement_control);
 
-  set_timer(TIMER_A, time_to_return_ms, TIMER_RETURN);
+  set_timer(TIMER_RETURN, time_to_return_ms, EVENT_TIMER_RETURN);
   StartScheduler();
 
   return 0;
