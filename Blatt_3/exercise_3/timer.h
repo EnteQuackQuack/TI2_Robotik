@@ -34,7 +34,8 @@ typedef uint8_t timer;
 void set_timer(timer timer, int time, uint8_t ev);
 
 /**
- * @brief function to start a timer that has been initialized with set_timer()
+ * @brief function to start a timer that has been initialized with set_timer().
+ * Starting an already running timer restarts it.
  *
  * @param timer: name of the timer to be started
  */
@@ -42,7 +43,7 @@ void start_timer(timer timer);
 
 /**
  * @brief function to cancel a running timer that has been started with
- * start_timer(). Starting an already running timer restarts it.
+ * start_timer().
  *
  * @param timer: name of the timer to be cancelled
  */
