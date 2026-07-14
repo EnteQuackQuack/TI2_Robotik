@@ -101,6 +101,6 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
 > | P-Regler | $a_P(t)=KP⋅Δ(t)$ | Schnelle Sprungantwort. | Bleibende Regelabweichung bei P-Strecken. | Strecken ohne Ausgleich (I-Strecken). |
 > | I-Regler | $a_I(t)=KI⋅∫0tΔ(t) dt$ | Kompensiert Regelabweichung vollständig. | Langsame Reaktion, Überschwingen. | P-Strecken (mit Ausgleich). |
 > | D-Regler | $a_D(t)=KD⋅(dΔ(t)/dt)$ | Schnelle Reaktion auf Änderungen. | Keine Kenntnis der Regelabweichung (allein nicht einsetzbar). | Kombination mit P/I. |
-> | PI-Regler | $a_(PI)(t)=a_P(t) + a_I(t)$ | Kompensiert bleibende Abweichung. | Überschwingen möglich. | P-Strecken. |
-> | PD-Regler | $a_(PD)(t)=a_P(t) + a_D(t)$ | Schnelle Reaktion + Dämpfung. | Keine Kompensation bleibender Abweichung. | Strecken mit Verzögerung. |
-> | PID-Regler | $a_(PID)(t)=a_P(t) + a_I(t) + a_D(t)$ | Allrounder für die meisten Strecken. | Komplexere Einstellung. | Standardlösung für die meisten Fälle. |
+> | PI-Regler | $a_P_I(t)=a_P(t) + a_I(t)$ | Kompensiert bleibende Abweichung. | Überschwingen möglich. | P-Strecken. |
+> | PD-Regler | $a_P_D(t)=a_P(t) + a_D(t)$ | Schnelle Reaktion + Dämpfung. | Keine Kompensation bleibender Abweichung. | Strecken mit Verzögerung. |
+> | PID-Regler | $a_P_I_D(t)=a_P(t) + a_I(t) + a_D(t)$ | Allrounder für die meisten Strecken. | Komplexere Einstellung. | Standardlösung für die meisten Fälle. |
