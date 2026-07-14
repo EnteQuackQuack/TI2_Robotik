@@ -105,7 +105,7 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
 > | PD-Regler | $a_P(t) + a_D(t)$ | Schnelle Reaktion + Dämpfung. | Keine Kompensation bleibender Abweichung. | Strecken mit Verzögerung. |
 > | PID-Regler | $a_P(t) + a_I(t) + a_D(t)$ | Allrounder für die meisten Strecken. | Komplexere Einstellung. | Standardlösung für die meisten Fälle. |
 
-![PID Regler Diagram] (./PID-Regler.webp)
+![PID Regler Diagram](./PID-Regler.webp)
 
 ---
 
