@@ -105,6 +105,8 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
 > | PD-Regler | $a_P(t) + a_D(t)$ | Schnelle Reaktion + Dämpfung. | Keine Kompensation bleibender Abweichung. | Strecken mit Verzögerung. |
 > | PID-Regler | $a_P(t) + a_I(t) + a_D(t)$ | Allrounder für die meisten Strecken. | Komplexere Einstellung. | Standardlösung für die meisten Fälle. |
 
+![Regler Verhalten Ubersicht] (https://temperatur-profis.de/wp-content/uploads/2022/09/220912_PID-Regler.webp)
+
 ---
 
 ---
@@ -118,11 +120,8 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
  | **I-Strecke** (ohne Ausgleich) | P-Regler (oder PD) | Keine bleibende Abweichung, da keine Gegenkraft (z. B. Reibung) existiert.                     |
  | **P-Strecke** (mit Ausgleich)  | PI-Regler (oder PID) | I-Anteil kompensiert die bleibende Abweichung.                                              |
 
----
----
 ### **Detaillierte Erklärung**
 
----
 #### **I-Strecke (ohne Ausgleich)**
 - **Beispiel**: Raumschiff-Antrieb (keine Reibung im Weltall).
 - **P-Regler allein reicht**:
@@ -131,7 +130,6 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
 - **PD-Regler als Upgrade**:
   - Der **D-Anteil** dämpft **Überschwingen** (z. B. wenn das Raumschiff zu schnell beschleunigt).
 
----
 #### **P-Strecke (mit Ausgleich)**
 - **Beispiel**: Wassertank mit Abfluss.
 - **P-Regler allein reicht NICHT**:
@@ -142,17 +140,14 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
   - Der **D-Anteil** dämpft **Überschwingen** (z. B. wenn der Tank zu schnell gefüllt wird).
 
 ---
----
-### **Erweiterte Streckentypen (für die Klausur)**
+### **Erweiterte Streckentypen**
 
----
 #### **Totzeitstrecken**
 - **Beispiel**: Transportbänder.
 - **Nur I-Regler oder PID funktionieren**:
   - P/D allein können **Totzeit nicht ausgleichen**.
   - **Begründung**: P-Regler reagiert zu spät, D-Regler kann die Verzögerung nicht vorhersehen.
 
----
 #### **PTn-Strecken (mit Verzögerung)**
 - **Beispiel**: Heizung.
 - **PID-Regler ist Standard**, weil:
@@ -161,23 +156,20 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
   - **D**: Dämpft Überschwingen durch die Verzögerung.
 
 ---
----
 ### **Allgemeine Regeln**
 - **PID-Regler ist der Allrounder**:
   - Durch Setzen von $K_P$, $K_I$ oder $K_D$ auf 0 lassen sich **alle anderen Regler** (P, I, D, PI, PD) implementieren.
 
 > [!IMPORTANT]
-> - **Merksatz**:
-  > - **I-Strecke** → **P/PD**.
-  > - **P-Strecke** → **PI/PID**.
-  > - **PTn-Strecke/Totzeit** → **PID**.
+> **Merksatz**:
+> - **I-Strecke** → **P/PD**.
+> - **P-Strecke** → **PI/PID**.
+> - **PTn-Strecke/Totzeit** → **PID**.
 
----
 ---
 ### **Moegliche Klausurfrage**
 **"Warum kann man bei einer I-Strecke keinen I-Regler verwenden?"**
 → **Antwort**:
 Bei einer I-Strecke (z. B. Raumschiff) gibt es **keinen Ausgleich** → Der I-Regler würde die Stellgröße **ins Unendliche treiben**.
 
----
 ---
