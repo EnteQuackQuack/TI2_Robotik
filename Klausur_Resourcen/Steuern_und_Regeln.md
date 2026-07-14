@@ -106,7 +106,7 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
 > | PID-Regler | $a_P(t) + a_I(t) + a_D(t)$ | Allrounder für die meisten Strecken. | Komplexere Einstellung. | Standardlösung für die meisten Fälle. |
 
 #### PID Regler Diagram
-![PID Regler Diagram](./PID-Regler.webp)
+![PID Regler Diagram](./Picutes/PID-Regler.webp)
 
 ---
 
@@ -177,8 +177,8 @@ Bei einer I-Strecke (z. B. Raumschiff) gibt es **keinen Ausgleich** → Der I-Re
 
 ### Wie gut eingestellte Regler aussehen
 #### P-Regler
-![Picture](./p-regler-einstellen.svg)
+![Picture](./Pictures/p-regler-einstellen.svg)
 #### PI-Regler
-![Picture](./pi-regler-einstellen.svg)
+![Picture](./Pictures/pi-regler-einstellen.svg)
 #### PID-Regler
-![Picture](./pid-regler-einstellen.svg)
+![Picture](./Pictures/pid-regler-einstellen.svg)
