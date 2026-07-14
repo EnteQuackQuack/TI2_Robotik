@@ -2,16 +2,23 @@
 
 ---
 ## **Echtzeitanforderungen**
-Echtzeitsysteme müssen **Zeitbedingungen** einhalten, um korrekt zu funktionieren.
+Echtzeitsysteme müssen **Zeitbedingungen** einhalten, um korrekt zu funktionieren.\
 
 ### Arten von Echtzeitsystemen
 - **Harte Echtzeitsysteme**:
   - **Deadline muss immer eingehalten werden**, sonst entsteht ein **Schaden**.
+  - Muessen **deterministisch** (vorhersehbar) sein.
   - **Beispiel**: Airbag-Steuerung (Verzögerung → lebensgefährlich).
 
 - **Weiche Echtzeitsysteme**:
   - **Deadline sollte eingehalten werden**, aber bei Nichteinhaltung nimmt der Nutzen ab.
+  - Muessen nicht **deterministisch** sein, sollten aber meistens die Deadline einhalte
   - **Beispiel**: Geschwindigkeitsanzeige im Auto (leicht verzögerte Anzeige ist tolerierbar).
+
+> [!Note]
+> **Deadline einer Funktion**
+> - Deadline = Spätester zulässiger Zeitpunkt, zu dem eine Funktion ihr Ergebnis liefern muss.
+> - Sie wird relativ zur Aktivierung der Funktion angegeben (z. B. "innerhalb von 10 ms nach Start").
 
 ---
 
