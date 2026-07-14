@@ -104,3 +104,80 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
 > | PI-Regler | $a_P(t) + a_I(t)$ | Kompensiert bleibende Abweichung. | Überschwingen möglich. | P-Strecken. |
 > | PD-Regler | $a_P(t) + a_D(t)$ | Schnelle Reaktion + Dämpfung. | Keine Kompensation bleibender Abweichung. | Strecken mit Verzögerung. |
 > | PID-Regler | $a_P(t) + a_I(t) + a_D(t)$ | Allrounder für die meisten Strecken. | Komplexere Einstellung. | Standardlösung für die meisten Fälle. |
+
+---
+
+---
+
+## **Reglerauswahl nach Streckentyp**
+
+---
+### **Grundlagen: I-Strecke vs. P-Strecke**
+   **Streckentyp**       | **Empfohlener Regler** | **Begründung**                                                                                     |
+ |-----------------------|------------------------|---------------------------------------------------------------------------------------------------|
+ | **I-Strecke** (ohne Ausgleich) | P-Regler (oder PD) | Keine bleibende Abweichung, da keine Gegenkraft (z. B. Reibung) existiert.                     |
+ | **P-Strecke** (mit Ausgleich)  | PI-Regler (oder PID) | I-Anteil kompensiert die bleibende Abweichung.                                              |
+
+---
+---
+### **Detaillierte Erklärung**
+
+---
+#### **I-Strecke (ohne Ausgleich)**
+- **Beispiel**: Raumschiff-Antrieb (keine Reibung im Weltall).
+- **P-Regler allein reicht**:
+  - Die Strecke hat **keinen Ausgleich** → Der Regler muss **keine bleibende Abweichung** kompensieren.
+  - Warum kein I-Anteil? Der I-Anteil würde hier **unendliche Stellgrößen** erzeugen.
+- **PD-Regler als Upgrade**:
+  - Der **D-Anteil** dämpft **Überschwingen** (z. B. wenn das Raumschiff zu schnell beschleunigt).
+
+---
+#### **P-Strecke (mit Ausgleich)**
+- **Beispiel**: Wassertank mit Abfluss.
+- **P-Regler allein reicht NICHT**:
+  - Die Strecke hat **Ausgleich** (z. B. Abfluss kompensiert Zufluss) → **bleibende Regelabweichung** bleibt bestehen.
+- **PI-Regler nötig**:
+  - Der **I-Anteil** integriert die Abweichung und kompensiert sie vollständig.
+- **PID-Regler als Upgrade**:
+  - Der **D-Anteil** dämpft **Überschwingen** (z. B. wenn der Tank zu schnell gefüllt wird).
+
+---
+---
+### **Erweiterte Streckentypen (für die Klausur)**
+
+---
+#### **Totzeitstrecken**
+- **Beispiel**: Transportbänder.
+- **Nur I-Regler oder PID funktionieren**:
+  - P/D allein können **Totzeit nicht ausgleichen**.
+  - **Begründung**: P-Regler reagiert zu spät, D-Regler kann die Verzögerung nicht vorhersehen.
+
+---
+#### **PTn-Strecken (mit Verzögerung)**
+- **Beispiel**: Heizung.
+- **PID-Regler ist Standard**, weil:
+  - **P**: Schnelle Reaktion.
+  - **I**: Kompensiert bleibende Abweichung.
+  - **D**: Dämpft Überschwingen durch die Verzögerung.
+
+---
+---
+### **Allgemeine Regeln**
+- **PID-Regler ist der Allrounder**:
+  - Durch Setzen von $K_P$, $K_I$ oder $K_D$ auf 0 lassen sich **alle anderen Regler** (P, I, D, PI, PD) implementieren.
+
+> [!IMPORTANT]
+> - **Merksatz**:
+  > - **I-Strecke** → **P/PD**.
+  > - **P-Strecke** → **PI/PID**.
+  > - **PTn-Strecke/Totzeit** → **PID**.
+
+---
+---
+### **Moegliche Klausurfrage**
+**"Warum kann man bei einer I-Strecke keinen I-Regler verwenden?"**
+→ **Antwort**:
+Bei einer I-Strecke (z. B. Raumschiff) gibt es **keinen Ausgleich** → Der I-Regler würde die Stellgröße **ins Unendliche treiben**.
+
+---
+---
