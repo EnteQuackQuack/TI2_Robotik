@@ -1,7 +1,7 @@
 # **Tasterprellen (Bounce-Effekt)**
 ---
 ## **Bild zur Veranschaulichung**
-[!Picture showing debouncing](./debounce.png)
+![Picture showing debouncing](./debounce.png)
 
 ---
 ## **Was ist Tasterprellen?**
