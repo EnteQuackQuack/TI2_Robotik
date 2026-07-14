@@ -36,9 +36,7 @@ Drei Software-Funktionen auf einem Steuergerät:
 > ### **Analyse des Systemverhaltens**
 > - **Worst-Case-Szenario** für Funktion C:\
 > Sensorabfrage muss **mindestens alle 2 ms** erfolgen, um die Deadline einzuhalten:\
-> $$
-> T_{\text{poll}} \leq D_C - C_C = 10\,\text{ms} - 8\,\text{ms} = 2\,\text{ms}
-> $$
+> $T_{\text{poll}} \leq D_C - C_C = 10\,\text{ms} - 8\,\text{ms} = 2\,\text{ms}$
 > - **$T_{\text{poll}}$**: Maximales Intervall zwischen Sensorabfragen.
 > - **$D_C$**: Deadline von Funktion C (10 ms).
 > - **$C_C$**: Ausführungszeit von Funktion C (8 ms).
@@ -48,12 +46,28 @@ Drei Software-Funktionen auf einem Steuergerät:
 ## **Lösungsansätze für Konflikte**
 
 ### 1. **Monolithische Implementierung (naiv)**
+**Was ist das?**
+- **Ansatz**: Alle Funktionen (A, B, C) werden in **einer einzigen Endlosschleife** in `main()` implementiert.
+- **Beispielcode**:
+  ```c
+  int main() {
+    while(1) {
+      // Funktion A aufrufen
+      CockpitDisplay_Update();
+      // Funktion B aufrufen
+      SendDataToEngine();
+      // Funktion C manuell einbauen: Sensor alle 2 ms abfragen
+      if (getTime() % 2 == 0) { CheckAirbagSensor(); }
+    }
+  }
+  ```
 - **Problem**:
-  - Manuelles Einfügen von Aufrufpunkten für Funktion C in Funktion B.
+  - Manuelles Einfügen von Aufrufpunkten für Funktionen.
   - **Nachteile**:
     - Sehr komplex und fehleranfällig.
     - Nicht skalierbar (z. B. bei Schleifen oder Compileroptimierungen).
-    - Seiteneffekte möglich.
+    - Die vorgegebenen Reaktionszeiten (siehe Beispielsystem) koennen nicht eingehalten werden
+    - andere Seiteneffekte möglich.
 > [!CAUTION]
 > Monolitische Implementierung ist fuer Problem quasi kein Problem eine Loesung
 
@@ -120,7 +134,7 @@ int main() {
   CreateAndStartTask(AppTask2);
 
   /* Betriebssystem starten */
-  StartScheduler(); // Keine Rückkehr nach diesem Aufruf!
+  StartScheduler();
 
   return 0; // Wird nie erreicht
 }
