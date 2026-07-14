@@ -32,15 +32,16 @@ Drei Software-Funktionen auf einem Steuergerät:
 > **Kritisch**: Funktion C muss **spätestens nach 10 ms** reagieren, sonst versagt das System.
 
 ---
-### **Analyse des Systemverhaltens**
-- **Worst-Case-Szenario** für Funktion C:
-  - Sensorabfrage muss **mindestens alle 2 ms** erfolgen, um die Deadline einzuhalten:
-    $$
-    T_{\text{poll}} \leq D_C - C_C = 10\,\text{ms} - 8\,\text{ms} = 2\,\text{ms}
-    $$
-  - **$T_{\text{poll}}$**: Maximales Intervall zwischen Sensorabfragen.
-  - **$D_C$**: Deadline von Funktion C (10 ms).
-  - **$C_C$**: Ausführungszeit von Funktion C (8 ms).
+> [!IMPORTANT]
+> ### **Analyse des Systemverhaltens**
+> - **Worst-Case-Szenario** für Funktion C:\
+> Sensorabfrage muss **mindestens alle 2 ms** erfolgen, um die Deadline einzuhalten:\
+> $$
+> T_{\text{poll}} \leq D_C - C_C = 10\,\text{ms} - 8\,\text{ms} = 2\,\text{ms}
+> $$
+> - **$T_{\text{poll}}$**: Maximales Intervall zwischen Sensorabfragen.
+> - **$D_C$**: Deadline von Funktion C (10 ms).
+> - **$C_C$**: Ausführungszeit von Funktion C (8 ms).
 
 ---
 ---
@@ -53,10 +54,10 @@ Drei Software-Funktionen auf einem Steuergerät:
     - Sehr komplex und fehleranfällig.
     - Nicht skalierbar (z. B. bei Schleifen oder Compileroptimierungen).
     - Seiteneffekte möglich.
+> [!CAUTION]
+> Monolitische Implementierung ist fuer Problem quasi kein Problem eine Loesung
 
-> **Fazit**: Nicht praktikabel für komplexe Systeme.
-
-### 2. **Prozesse/Threads**
+### 2. **Prozesse/Threads (professioneler Ansatz)**
 - **Lösung**: Aufgaben als **unabhängige Threads** (oder Prozesse) implementieren.
 - **Vorteile**:
   - Keine manuelle Aufrufpunkt-Verwaltung.
@@ -82,9 +83,10 @@ Drei Software-Funktionen auf einem Steuergerät:
 ---
 ---
 ## **Threadverwaltung auf dem NNXT**
-Das **FreeRTOS** des NNXT verwendet einen **Zeitscheiben-Scheduler** (keine Priorisierung!):
-- Jeder Thread bekommt für **~1 ms Rechenzeit** zugewiesen, dann wird gewechselt.
-- **Tasks** (NNXT-spezifische Threads) werden als spezielle Funktionen geschrieben.
+> [!NOTE]
+> Das **FreeRTOS** des NNXT verwendet einen **Zeitscheiben-Scheduler** (keine Priorisierung!):
+> - Jeder Thread bekommt für **~1 ms Rechenzeit** zugewiesen, dann wird gewechselt.
+> - **Tasks** (NNXT-spezifische Threads) werden als spezielle Funktionen geschrieben.
 
 ### **NNXT-Funktionen für Tasks**
  | Funktion | Beschreibung |
