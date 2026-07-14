@@ -98,9 +98,9 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
 > ### Reglerklassen und ihr Verhalten
 > | Reglertyp | Formel | Vorteile | Nachteile | Einsatzgebiet |
 > | --- | --- | --- | --- | --- |
-> | P-Regler | a(t)=KP⋅Δ(t)a(t) = K_P \cdot \Delta(t)a(t)=KP​⋅Δ(t) | Schnelle Sprungantwort. | Bleibende Regelabweichung bei P-Strecken. | Strecken ohne Ausgleich (I-Strecken). |
-> | I-Regler | a(t)=KI⋅∫0tΔ(t) dta(t) = K_I \cdot \int_0^t \Delta(t) \, dta(t)=KI​⋅∫0t​Δ(t)dt | Kompensiert Regelabweichung vollständig. | Langsame Reaktion, Überschwingen. | P-Strecken (mit Ausgleich). |
-> | D-Regler | a(t)=KD⋅dΔ(t)dta(t) = K_D \cdot \frac{d\Delta(t)}{dt}a(t)=KD​⋅dtdΔ(t)​ | Schnelle Reaktion auf Änderungen. | Keine Kenntnis der Regelabweichung (allein nicht einsetzbar). | Kombination mit P/I. |
-> | PI-Regler | a(t)=KP⋅Δ(t)+KI⋅∫0tΔ(t) dta(t) = K_P \cdot \Delta(t) + K_I \cdot \int_0^t \Delta(t) \, dta(t)=KP​⋅Δ(t)+KI​⋅∫0t​Δ(t)dt | Kompensiert bleibende Abweichung. | Überschwingen möglich. | P-Strecken. |
-> | PD-Regler | a(t)=KP⋅Δ(t)+KD⋅dΔ(t)dta(t) = K_P \cdot \Delta(t) + K_D \cdot \frac{d\Delta(t)}{dt}a(t)=KP​⋅Δ(t)+KD​⋅dtdΔ(t)​ | Schnelle Reaktion + Dämpfung. | Keine Kompensation bleibender Abweichung. | Strecken mit Verzögerung. |
-> | PID-Regler | a(t)=KP⋅Δ(t)+KI⋅∫0tΔ(t) dt+KD⋅dΔ(t)dta(t) = K_P \cdot \Delta(t) + K_I \cdot \int_0^t \Delta(t) \, dt + K_D \cdot \frac{d\Delta(t)}{dt}a(t)=KP​⋅Δ(t)+KI​⋅∫0t​Δ(t)dt+KD​⋅dtdΔ(t)​ | Allrounder für die meisten Strecken. | Komplexere Einstellung. | Standardlösung für die meisten Fälle. |
+> | P-Regler | $a(t)=KP⋅Δ(t)a(t) = K_P \cdot \Delta(t)a(t)=KP​⋅Δ(t)$ | Schnelle Sprungantwort. | Bleibende Regelabweichung bei P-Strecken. | Strecken ohne Ausgleich (I-Strecken). |
+> | I-Regler | $a(t)=KI⋅∫0tΔ(t) dta(t) = K_I \cdot \int_0^t \Delta(t) \, dta(t)=KI​⋅∫0t​Δ(t)dt$ | Kompensiert Regelabweichung vollständig. | Langsame Reaktion, Überschwingen. | P-Strecken (mit Ausgleich). |
+> | D-Regler | $a(t)=KD⋅dΔ(t)dta(t) = K_D \cdot \frac{d\Delta(t)}{dt}a(t)=KD​⋅dtdΔ(t)​$ | Schnelle Reaktion auf Änderungen. | Keine Kenntnis der Regelabweichung (allein nicht einsetzbar). | Kombination mit P/I. |
+> | PI-Regler | $a(t)=KP⋅Δ(t)+KI⋅∫0tΔ(t) dta(t) = K_P \cdot \Delta(t) + K_I \cdot \int_0^t \Delta(t) \, dta(t)=KP​⋅Δ(t)+KI​⋅∫0t​Δ(t)dt$ | Kompensiert bleibende Abweichung. | Überschwingen möglich. | P-Strecken. |
+> | PD-Regler | $a(t)=KP⋅Δ(t)+KD⋅dΔ(t)dta(t) = K_P \cdot \Delta(t) + K_D \cdot \frac{d\Delta(t)}{dt}a(t)=KP​⋅Δ(t)+KD​⋅dtdΔ(t)​$ | Schnelle Reaktion + Dämpfung. | Keine Kompensation bleibender Abweichung. | Strecken mit Verzögerung. |
+> | PID-Regler | $a(t)=KP⋅Δ(t)+KI⋅∫0tΔ(t) dt+KD⋅dΔ(t)dta(t) = K_P \cdot \Delta(t) + K_I \cdot \int_0^t \Delta(t) \, dt + K_D \cdot \frac{d\Delta(t)}{dt}a(t)=KP​⋅Δ(t)+KI​⋅∫0t​Δ(t)dt+KD​⋅dtdΔ(t)​$ | Allrounder für die meisten Strecken. | Komplexere Einstellung. | Standardlösung für die meisten Fälle. |
