@@ -7,6 +7,7 @@
 ## Problem
 Mikrocontroller arbeiten **diskret** und können die **kontinuierliche Entwicklung physikalischer Größen** (z. B. Sensorwerte) **nur in endlichen Zeitintervallen** erfassen.
 
+[!NOTE]
 > **Frage:** ❓
 > Wie oft muss ein Signal abgetastet werden, um es **korrekt zu rekonstruieren** und keine Informationen (z. B. Maxima/Minima) zu verlieren?
 
@@ -22,8 +23,7 @@ $$
 f_{\text{abtast}} > 2 \cdot f
 $$
 
-> **Wichtig:** ⚠️
-
+[!IMPORTANT]
 > - **$f$** = höchste **relevante** Frequenz im Signal (nicht zwingend die physikalisch höchste!).
 > - Beispiel Taster: Maximale Betätigungsfrequenz = 10 Hz → **$f_{\text{abtast}} > 20$ Hz** (Intervall ≤ 50 ms).
 
@@ -72,7 +72,7 @@ $$
 - **Prell-Effekte** → Falsche Detektion (z. B. Taster "gedrückt" → "nicht gedrückt" → "gedrückt").
   → **Lösung:** Entprell-Algorithmen oder Hardware-Filter.
 
-> **Merksatz:**
+[!TIP]
 > **"So hoch wie nötig, so niedrig wie möglich!"**
 > - Niedrigere Abtastrate → Sparsam mit Ressourcen (Strom, CPU).
 > - Höhere Abtastrate → Genauere Daten, aber mehr Aufwand.
@@ -88,7 +88,6 @@ $$
 + ✅ Filterung (Tiefpass) gegen Rauschen/Oberschwingungen.
 - ❌ Prell-Effekte sind keine relevanten Frequenzen (außer, man will sie messen)!
 - ❌ Zu hohe Abtastrate → unnötige Rechenlast.
----
 ```
 
 ---
