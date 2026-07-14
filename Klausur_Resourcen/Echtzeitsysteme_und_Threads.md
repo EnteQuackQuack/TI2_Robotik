@@ -15,10 +15,13 @@ Echtzeitsysteme müssen **Zeitbedingungen** einhalten, um korrekt zu funktionier
   - Muessen nicht **deterministisch** sein, sollten aber meistens die Deadline einhalte
   - **Beispiel**: Geschwindigkeitsanzeige im Auto (leicht verzögerte Anzeige ist tolerierbar).
 
-> [!Note]
+> [!NOTE]
 > **Deadline einer Funktion**
-> - Deadline = Spätester zulässiger Zeitpunkt, zu dem eine Funktion ihr Ergebnis liefern muss.
-> - Sie wird relativ zur Aktivierung der Funktion angegeben (z. B. "innerhalb von 10 ms nach Start").
+> - **Definition**: Spätester Zeitpunkt, bis zu dem eine Funktion ihr Ergebnis liefern **muss**.
+> - Wird **relativ zur Aktivierung** angegeben (z. B. "innerhalb von 10 ms nach Start").
+> - **Reaktionszeit** = Zeit von der Aktivierung bis zum Vorliegen des Ergebnisses.
+>   - **Formel**: `Reaktionszeit ≤ Deadline`
+> - **Ausführungszeit** = Zeit, die die Funktion zur Berechnung benötigt (z. B. 8 ms für Funktion C).
 
 ---
 
@@ -40,13 +43,18 @@ Drei Software-Funktionen auf einem Steuergerät:
 
 ---
 > [!IMPORTANT]
-> ### **Analyse des Systemverhaltens**
-> - **Worst-Case-Szenario** für Funktion C:\
-> Sensorabfrage muss **mindestens alle 2 ms** erfolgen, um die Deadline einzuhalten:\
-> $T_{\text{poll}} \leq D_C - C_C = 10\,\text{ms} - 8\,\text{ms} = 2\,\text{ms}$
-> - **$T_{\text{poll}}$**: Maximales Intervall zwischen Sensorabfragen.
-> - **$D_C$**: Deadline von Funktion C (10 ms).
-> - **$C_C$**: Ausführungszeit von Funktion C (8 ms).
+> **Worst-Case-Analyse für Funktion C**
+> - **Problem**: Funktion C muss den Sensor **regelmäßig abfragen**, um einen Crash zu erkennen.
+> - **Lösung**:
+>   - Maximales **Abtastintervall** ($T_{\text{poll}}$) berechnen, damit die Deadline eingehalten wird:
+>     $$
+>     T_{\text{poll}} \leq D_C - C_C = 10\,\text{ms} - 8\,\text{ms} = 2\,\text{ms}
+>     $$
+>   - **$T_{\text{poll}}$**: Maximales Intervall zwischen Sensorabfragen.
+>   - **$D_C$**: **Deadline** von Funktion C (10 ms).
+>   - **$C_C$**: **Ausführungszeit** von Funktion C (8 ms).
+> - **Interpretation**:
+>   - Funktion C darf **maximal alle 2 ms** den Sensor abfragen, um sicherzustellen, dass sie **innerhalb von 10 ms** reagieren kann (8 ms Berechnung + 2 ms Puffer).
 
 ---
 ---
@@ -76,7 +84,7 @@ Drei Software-Funktionen auf einem Steuergerät:
     - Die vorgegebenen Reaktionszeiten (siehe Beispielsystem) koennen nicht eingehalten werden
     - andere Seiteneffekte möglich.
 > [!CAUTION]
-> Monolitische Implementierung ist fuer Problem quasi kein Problem eine Loesung
+> Monolitische Implementierung ist fuer quasi kein Problem eine Loesung
 
 ### 2. **Prozesse/Threads (professioneler Ansatz)**
 - **Lösung**: Aufgaben als **unabhängige Threads** (oder Prozesse) implementieren.
@@ -101,6 +109,38 @@ Drei Software-Funktionen auf einem Steuergerät:
 > 2. **running**: Thread nutzt gerade die CPU.
 > 3. **blocked**: Thread wartet (z. B. auf eine Nachricht oder Ressource).
 
+> [!WARNING]
+> #### **Kritische Bereiche**
+> **Problem:**
+> Mehrere Tasks greifen **gleichzeitig** auf dieselbe Ressource zu (z. B. globale Variablen, Motor, Sensoren).
+> - **Beispiel mit NNXT.h**:
+>   - Task A liest den Wert eines **globalen Sensors** (z. B. `SensorValue`).
+>   - Task B schreibt in denselben Sensor, während Task A liest → **Dateninkonsistenz** (z. B. halb aktualisierter Wert).
+
+---
+> **Lösung für NNXT (FreeRTOS):**
+> 1. **Kritische Bereiche identifizieren**:
+>    - Codeabschnitte, in denen auf **geteilte Ressourcen** (z. B. Sensoren, Motoren, globale Variablen) zugegriffen wird.
+>
+> 2. **Schutzmechanismen in NNXT.h**:
+>    - **`taskENTER_CRITICAL()`** und **`taskEXIT_CRITICAL`**:
+>      - Sperrt/entsperrt den Zugriff auf kritische Bereiche.
+>      - **Beispiel**:
+>        ```c
+>        taskENTER_CRITICAL();  // Sperre setzen
+>        // Kritischer Bereich: z. B. Sensorwert lesen/schreiben
+>        int sensorValue = ReadSensor(Port_0);
+>        ProcessSensorValue(sensorValue);
+>        taskEXIT_CRITICAL();   // Sperre aufheben
+>        ```
+>    - **Hinweis**:
+>      - **Keine automatische Erkennung** durch Compiler → **manuelle Implementierung nötig!**
+>      - **Dokumentation**: Siehe [NNXT-Tutorial](https://nnxt.io/docs) für Details.
+
+---
+> **Warum ist das wichtig?**
+> - Ohne Schutz: **Race Conditions** → Unvorhersehbares Verhalten (z. B. Abstürze, falsche Sensorwerte).
+> - Mit Schutz: **Deterministisches Verhalten** (wichtig für harte Echtzeitsysteme).
 ---
 ---
 ## **Threadverwaltung auf dem NNXT**
