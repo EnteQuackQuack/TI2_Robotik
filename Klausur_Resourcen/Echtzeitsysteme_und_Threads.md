@@ -56,7 +56,6 @@ Drei Software-Funktionen auf einem Steuergerät:
 
 > **Fazit**: Nicht praktikabel für komplexe Systeme.
 
----
 ### 2. **Prozesse/Threads**
 - **Lösung**: Aufgaben als **unabhängige Threads** (oder Prozesse) implementieren.
 - **Vorteile**:
@@ -64,21 +63,21 @@ Drei Software-Funktionen auf einem Steuergerät:
   - Besser skalierbar und wartbar.
 - **Nachteil**: Benötigt einen **Scheduler** zur Verwaltung.
 
-#### **Multithreading**
-- **Definition**: (Quasi-)parallele Ausführung mehrerer Funktionen.
-- **Steuerung durch Betriebssystem**:
-  - Startet, stoppt und unterbricht Threads nach einer **Strategie** (z. B. Priorisierung).
-- **Wichtige Zeitbedingungen**:
-  - **Deadline**: Bis wann muss die Funktion fertig sein?
-  - **Aktivierung**: Wann muss die Funktion gestartet werden?
-  - **Priorisierung**: Gibt es Threads mit Vorrang?
-
----
-#### **Thread-Zustände**
-Jeder Thread befindet sich in einem von drei Zuständen:
-1. **ready**: Thread möchte Rechenzeit erhalten.
-2. **running**: Thread nutzt gerade die CPU.
-3. **blocked**: Thread wartet (z. B. auf eine Nachricht oder Ressource).
+> [!TIP] 
+> #### **Multithreading**
+> - **Definition**: (Quasi-)parallele Ausführung mehrerer Funktionen.
+> - **Steuerung durch Betriebssystem**:
+>   - Startet, stoppt und unterbricht Threads nach einer **Strategie** (z. B. Priorisierung).
+> - **Wichtige Zeitbedingungen**:
+>   - **Deadline**: Bis wann muss die Funktion fertig sein?
+>   - **Aktivierung**: Wann muss die Funktion gestartet werden?
+>   - **Priorisierung**: Gibt es Threads mit Vorrang?
+>
+> #### **Thread-Zustände**
+> Jeder Thread befindet sich in einem von drei Zuständen:
+> 1. **ready**: Thread möchte Rechenzeit erhalten.
+> 2. **running**: Thread nutzt gerade die CPU.
+> 3. **blocked**: Thread wartet (z. B. auf eine Nachricht oder Ressource).
 
 ---
 ---
