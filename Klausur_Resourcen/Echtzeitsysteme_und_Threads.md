@@ -116,8 +116,6 @@ Drei Software-Funktionen auf einem Steuergerät:
 > - **Beispiel mit NNXT.h**:
 >   - Task A liest den Wert eines **globalen Sensors** (z. B. `SensorValue`).
 >   - Task B schreibt in denselben Sensor, während Task A liest → **Dateninkonsistenz** (z. B. halb aktualisierter Wert).
-
----
 > **Lösung für NNXT (FreeRTOS):**
 > 1. **Kritische Bereiche identifizieren**:
 >    - Codeabschnitte, in denen auf **geteilte Ressourcen** (z. B. Sensoren, Motoren, globale Variablen) zugegriffen wird.
@@ -136,8 +134,6 @@ Drei Software-Funktionen auf einem Steuergerät:
 >    - **Hinweis**:
 >      - **Keine automatische Erkennung** durch Compiler → **manuelle Implementierung nötig!**
 >      - **Dokumentation**: Siehe [NNXT-Tutorial](https://nnxt.io/docs) für Details.
-
----
 > **Warum ist das wichtig?**
 > - Ohne Schutz: **Race Conditions** → Unvorhersehbares Verhalten (z. B. Abstürze, falsche Sensorwerte).
 > - Mit Schutz: **Deterministisches Verhalten** (wichtig für harte Echtzeitsysteme).
