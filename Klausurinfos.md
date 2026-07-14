@@ -1,0 +1,51 @@
+- nnxt.h als Anhang in die Klausur
+	- nicht selbst ausdrucken, wird ausgeteilt
+- sonst keine Hilfsmittel außer Stift und Taschenrechner
+- Implementierungen aus den Übungen anschauen
+- Folien anschauen
+	- besonders die Formeln für Regelungstechnik
+	- wie mans programmiert
+	- warum Integral/Differential
+	- gibt ne Theoriefrage dazu
+	- Abtasttheorem erklären
+	- Übung 6 Interpolation Theorie muss erklärt werden, Formel und warums geht
+- Programmieraufgaben
+	- 60%
+	- grobe Fehler kriegen Abzug, kleine Syntaxsachen ned
+## thematisch
+- relevant in welchen Größenordnungen sich die Leistung vom Roboter bewegt
+	- RAM
+	- CPU
+	- Motoren
+- Verwendung von Kritischen Bereichen erklären
+- Umgang mit mehreren Tasks
+	- Aufbau von Tasks
+- Abtasttheorem
+- Tasterflankenerkennung
+- Tastenprellen
+- Steuerung
+	- Timer
+	- Events
+	- warum und wies, Funktionsweise
+- Irgendwas zu nem Automaten
+	- Ableiten von Code aus nem Automaten
+	- Codierungsschema
+	- Automaten aus Aufgabenstellung zeichnen und herleiten
+- keine Aufgabenübergreifenden Problemstellungen
+- Regelung Theoriefragen
+	- einzelne Anteile von nem PID
+	- Strecke mit/ohne Ausgleich
+	- Gleichgewichtszustand
+		- was muss regler liefern, um Gleichgewichtszustand zu halten
+			- I-regler kann zb kein 0 liefern, daher ned auf Strecke ohne Ausgleich
+	- was passiert mit den verschiedenen Reglern auf den verschiedenen Strecken
+- Schaltbilder von I/O-Hardware
+	- Code Zusammenhang mit Schaltbild
+		- also zb Schaltbild kriegen, und LED ansteuern von wanns leuchtet und wann nicht etc
+	- nichts zu ic2-Protokoll
+- Analoge Sensoren und Kennfelder
+	- keine Mathematischen Fragen zu Festkommaarithmetik
+	- warum verwendet man Festkomma
+	- wie siehts aus
+- Kennfelder
+	- Interpolation Erklärung wies funktioniert und was man machen muss (eher Theorie)
