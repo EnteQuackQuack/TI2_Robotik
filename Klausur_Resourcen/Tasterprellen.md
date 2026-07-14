@@ -8,7 +8,7 @@
 Tasterprellen (engl. *Debouncing*) beschreibt das **ungewollte mehrfache Auslösen** eines mechanischen Tasters durch **Kontaktprellen** (kurzzeitiges Öffnen/Schließen der Kontakte beim Drücken oder Loslassen).
 
 - **Ursache**:
-  - Mechanische Kontakte (z. B. in Tastern) **prellen** beim Betätigen: Die Kontakte schließen/öffnen sich **mehrfach in Millisekunden**.
+  - Mechanische Kontakte (z. B. in Tastern) **prellen** beim Betätigen: Die Kontakte schließen/öffnen sich **mehrfach in Millisekunden**, dergrund ist einfach Physik.
   - Beispiel: Ein Taster sendet beim Drücken **mehrere Signale** (z. B. 1-0-1-0-1) statt nur **einem stabilen Signal** (1).
 ---
 
@@ -18,9 +18,8 @@ Ohne Gegenmaßnahmen führt Tasterprellen zu:
 - **Falsche Ereigniserkennung** (z. B. Taster wird als "mehrfach gedrückt" interpretiert).
 - **Ungewollte Reaktionen** des Systems (z. B. Airbag löst mehrmals aus, Motor startet/stoppt unkontrolliert).
 
-> [!WARNING]
-> **Beispiel**:
-> Ein Taster soll eine LED einschalten. Durch Prellen wird fälschlicherweise **LED ein → aus → ein** geschaltet.
+**Beispiel**:
+- Ein Taster soll eine LED einschalten. Durch Prellen wird fälschlicherweise **LED ein → aus → ein** geschaltet.
 ---
 
 ---
