@@ -32,6 +32,8 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
 > - Der **Zeitr** zum Erreichen des Zielzustands *sicher abgeschaetzt* werden kann.
 > - Relevates Wissen ueber Stoerungen auf diskretes Wissen reduzierbar ist (z.B. Ausfall von Komponenten) ***//Bessere Erklaerung einfuegen//***
 
+---
+
 > [!IMPORTANT]
 > ### 2. Entwurfsprinziep fuer Steuerungen
 > #### 1. **Physikalische Gegebenheiten** des Systems (inkl. Stoergroessen) zusammenstellen
@@ -45,3 +47,24 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
 > - Fuhrt die Steuerung nur zu konkreten Uebergaengen zwischen den abstrakten Zustaenden?
 >> #### ***Fazit:***
 > - Nur wenn alle 4 Punkte gegeben sind kann eine Steuerung implementiert werden, sonst ist eine Regelung von noeten.
+
+#### 3. Automaten erstellen (opt)
+- Es muss ich um einen NFA handeln
+
+#### 4. Implementierung
+- Wenn ein Automatat erstell wurde, diesen nutzen um Code zu generieren oder Code zuschreiben der genau nach dem Automaten arbeiten
+- Wenn keine Automat erstellt wurde einfach implementieren, aber halt sauber arbeiten damit keine Ausnahmen bei rum kommen
+
+---
+
+> [!TIP]
+> In der Klausur wird Steuerung warscheinlich in Form von Code dran kommen
+> z.B. einen einfachn Automaten Aufstellen oder implementieren
+> tief Theorie- oder Mathefragen sind eher unwarscheinlich, diese kommen bei der Regelung
+
+---
+
+---
+
+## Regelung: Grundlagen und Klassifizierung
+
