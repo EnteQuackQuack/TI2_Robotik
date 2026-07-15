@@ -106,7 +106,7 @@ Der entscheidenede Unterschied ist ob es eine stetig Rueckmeldung uber das Ergeb
 > | PID-Regler | $a_P(t) + a_I(t) + a_D(t)$ | Allrounder für die meisten Strecken. | Komplexere Einstellung. | Standardlösung für die meisten Fälle. |
 
 #### PID Regler Diagram
-![PID Regler Diagram](./Picutes/PID-Regler.webp)
+![PID Regler Diagram](./Pictures/PID-Regler.webp)
 
 ---
 
